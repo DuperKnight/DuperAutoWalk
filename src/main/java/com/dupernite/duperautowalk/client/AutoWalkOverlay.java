@@ -34,33 +34,6 @@ public class AutoWalkOverlay implements HudRenderCallback {
 
             RenderSystem.setShaderTexture(0, TEXTURE);
             if(keyInputHandler.isOn && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.HUD){
-                switch (YACLconfig.getPosition()) {
-                    case BOTTOM_LEFT-> y = height - 17;
-
-                    case BOTTOM_RIGHT -> {
-                        x = width - 16;
-                        y = height - 17;
-                    }
-
-                    case MIDDLE_LEFT -> y = height / 2 - 8;
-
-                    case MIDDLE_RIGHT -> {
-                        x = width - 16;
-                        y = height / 2 - 8;
-                    }
-
-                    case TOP_LEFT -> y = 1;
-
-                    case TOP_RIGHT -> {
-                        x = width - 16;
-                        y = 1;
-                    }
-                    case CUSTOM -> {
-                        x = YACLconfig.getCoords_x();
-                        y = YACLconfig.getCoords_y();
-                    }
-                }
-
                 switch (YACLconfig.getSize()) {
                     case EIGHT -> {
                         size_x = 8;
@@ -84,8 +57,35 @@ public class AutoWalkOverlay implements HudRenderCallback {
                     }
                 }
 
+                switch (YACLconfig.getPosition()) {
+                    case BOTTOM_LEFT-> y = height - size_y - 1;
+
+                    case BOTTOM_RIGHT -> {
+                        x = width - size_x - 1;
+                        y = height - size_y - 1;
+                    }
+
+                    case MIDDLE_LEFT -> y = height / 2 - size_y / 2;
+
+                    case MIDDLE_RIGHT -> {
+                        x = width - size_x - 1;
+                        y = height / 2 - size_y / 2;
+                    }
+
+                    case TOP_LEFT -> y = 1;
+
+                    case TOP_RIGHT -> {
+                        x = width - size_x - 1;
+                        y = 1;
+                    }
+                    case CUSTOM -> {
+                        x = YACLconfig.getCoords_x();
+                        y = YACLconfig.getCoords_y();
+                    }
+                }
+
                 //? if <1.21.2
-                /*drawContext.drawTexture(TEXTURE, x, y, 0,0,16,16,size_x,size_y);*/
+                /*drawContext.drawTexture(TEXTURE, x, y, 0,0,size_x,size_y,size_x,size_y);*/
                 //? if >=1.21.2
                 drawContext.drawTexture(RenderLayer::getGuiTexturedOverlay,TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
             }

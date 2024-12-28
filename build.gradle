@@ -98,4 +98,3 @@ loom {
         ideConfigGenerated true
         runDir "../../run"
     }
-}

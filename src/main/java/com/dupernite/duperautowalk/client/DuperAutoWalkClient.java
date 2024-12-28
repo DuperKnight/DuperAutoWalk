@@ -9,7 +9,6 @@ public class DuperAutoWalkClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         keyInputHandler.register();
-
         HudRenderCallback.EVENT.register(new AutoWalkOverlay());
     }
 }

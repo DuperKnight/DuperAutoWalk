@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "duperautowalk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "name": "Duper's AutoWalk",
   "description": "A simple mod that allows you to walk without holding the forward key.",
   "authors": ["Dupernite", "Inspired by CIOCOLATA47"],
@@ -20,7 +20,7 @@
     "fabricloader": ">=0.15.11",
     "fabric": "*",
     "yet_another_config_lib_v3": "*",
-    "minecraft": "1.21"
+    "minecraft": "*"
   },
   "custom": {
     "modmenu": {

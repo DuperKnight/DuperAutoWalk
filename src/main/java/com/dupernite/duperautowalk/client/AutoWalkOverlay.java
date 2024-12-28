@@ -26,6 +26,8 @@ public class AutoWalkOverlay implements HudRenderCallback {
             int height = client.getWindow().getScaledHeight();
             int x = 0;
             int y = 0;
+            int size_x = 16;
+            int size_y = 16;
 
             //? if <1.21.2
             /*RenderSystem.setShader(GameRenderer::getPositionTexProgram);*/
@@ -33,6 +35,33 @@ public class AutoWalkOverlay implements HudRenderCallback {
 
             RenderSystem.setShaderTexture(0, TEXTURE);
             if(keyInputHandler.isOn && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.HUD){
+                switch (YACLconfig.getPosition()) {
+                    case BOTTOM_LEFT-> y = height - size_y - 1;
+
+                    case BOTTOM_RIGHT -> {
+                        x = width - size_x - 1;
+                        y = height - size_y - 1;
+                    }
+
+                    case MIDDLE_LEFT -> y = height / 2 - size_y / 2;
+
+                    case MIDDLE_RIGHT -> {
+                        x = width - size_x - 1;
+                        y = height / 2 - size_y / 2;
+                    }
+
+                    case TOP_LEFT -> y = 1;
+
+                    case TOP_RIGHT -> {
+                        x = width - size_x - 1;
+                        y = 1;
+                    }
+                    case CUSTOM -> {
+                        x = YACLconfig.getCoords_x();
+                        y = YACLconfig.getCoords_y();
+                    }
+                }
+              
                 if(YACLconfig.getPosition() == YACLconfig.positionEnum.BOTTOM_LEFT){
                     y = height - 17;
                 } else if(YACLconfig.getPosition() == YACLconfig.positionEnum.BOTTOM_RIGHT){

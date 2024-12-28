@@ -13,13 +13,19 @@ import org.lwjgl.glfw.GLFW;
 public class keyInputHandler {
     public static final String CATEGORY = "key.category";
     public static final String KEY_AUTO_WALK = "key.duperautowalk.autowalk";
+    public static final String KEY_OPEN_CONFIG = "key.duperautowalk.config";
 
     public static KeyBinding autoWalkKey;
+    public static KeyBinding configKey;
+
     public static boolean isOn = false;
     private static boolean ForwardKeyState = false;
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (configKey.wasPressed()) {
+                MinecraftClient.getInstance().setScreen(YACLconfig.createScreen(null));
+            }
             if (autoWalkKey.wasPressed()) {
                 isOn = !isOn;
 
@@ -29,6 +35,13 @@ public class keyInputHandler {
                     } else {
                         client.player.sendMessage(Text.translatable("chat.duperautowalk.autowalk.disabled").formatted(Formatting.RED), false);
                     }
+                }
+            }
+
+            if (MinecraftClient.getInstance().options.backKey.wasPressed()){
+                isOn = false;
+                if (client.player != null && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.CHAT && ForwardKeyState) {
+                    client.player.sendMessage(Text.translatable("chat.duperautowalk.autowalk.disabled").formatted(Formatting.RED), false);
                 }
             }
 
@@ -48,6 +61,13 @@ public class keyInputHandler {
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_Z,
                 CATEGORY
+                )
+        );
+        configKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                KEY_OPEN_CONFIG,
+                        InputUtil.Type.KEYSYM,
+                        GLFW.GLFW_KEY_UNKNOWN,
+                        CATEGORY
                 )
         );
 

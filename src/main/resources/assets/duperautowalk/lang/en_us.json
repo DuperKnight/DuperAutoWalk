@@ -1,11 +1,13 @@
 {
   "key.category": "Duper's Utils",
   "key.duperautowalk.autowalk": "Auto Walk",
+  "key.duperautowalk.key.duperautowalk.config": "Auto Walk Config",
 
   "chat.duperautowalk.autowalk.enabled": "Auto Walking is now enabled.",
   "chat.duperautowalk.autowalk.disabled": "Auto Walking is now disabled.",
 
   "category.duperautowalk.general": "General",
+  "category.duperautowalk.position": "Position",
   "config.duperautowalk.title": "Auto Walk",
 
   "option.duperautowalk.feedback": "Where should the feedback be displayed?",
@@ -15,11 +17,25 @@
   "duperautowalk.feedback.hud": "HUD",
 
   "option.duperautowalk.position": "Position of the Auto Walk Icon",
-  "option.duperautowalk.enabled.position": "If enabled, the Auto Walk Icon will be displayed at the selected position.",
+  "option.duperautowalk.position.description": "If enabled, the Auto Walk Icon will be displayed at the selected position.",
   "duperautowalk.position.top_left": "Top Left",
   "duperautowalk.position.top_right": "Top Right",
   "duperautowalk.position.middle_left": "Middle Left",
   "duperautowalk.position.middle_right": "Middle Right",
   "duperautowalk.position.bottom_left": "Bottom Left",
-  "duperautowalk.position.bottom_right": "Bottom Right"
+  "duperautowalk.position.bottom_right": "Bottom Right",
+  "duperautowalk.position.custom": "Custom",
+
+  "option.duperautowalk.size": "Size of the Auto Walk Icon",
+  "option.duperautowalk.size.description": "Choose the size of the Auto Walk Icon.",
+  "duperautowalk.size.eight": "8x8",
+  "duperautowalk.size.sixteen": "16x16",
+  "duperautowalk.size.thirty_two": "32x32",
+  "duperautowalk.size.forty_eight": "48x48",
+  "duperautowalk.size.sixty_four": "64x64",
+
+  "option.duperautowalk.coordinates_x": "X Coordinate of the Auto Walk Icon",
+  "option.duperautowalk.coordinates_y": "Y Coordinate of the Auto Walk Icon",
+  "option.duperautowalk.coordinates_x.description": "The X coordinate of the Auto Walk Icon.",
+  "option.duperautowalk.coordinates_y.description": "The Y coordinate of the Auto Walk Icon."
 }

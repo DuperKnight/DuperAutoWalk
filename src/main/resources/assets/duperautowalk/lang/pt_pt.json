@@ -1,25 +1,41 @@
 {
-  "key.category": "Utilitários do Duper",
+  "key.category": "Duper's Utils",
   "key.duperautowalk.autowalk": "Caminhada Automática",
+  "key.duperautowalk.key.duperautowalk.config": "Configuração de Caminhada Automática",
 
-  "chat.duperautowalk.autowalk.enabled": "A caminhada automática está agora ativada.",
-  "chat.duperautowalk.autowalk.disabled": "A caminhada automática está agora desativada.",
+  "chat.duperautowalk.autowalk.enabled": "Caminhada Automática está agora ativada.",
+  "chat.duperautowalk.autowalk.disabled": "Caminhada Automática está agora desativada.",
 
   "category.duperautowalk.general": "Geral",
+  "category.duperautowalk.position": "Posição",
   "config.duperautowalk.title": "Caminhada Automática",
 
   "option.duperautowalk.feedback": "Onde deve ser exibido o feedback?",
-  "option.duperautowalk.feedback.description": "Escolha onde o feedback deve ser exibido ao alternar a Caminhada Automática.",
+  "option.duperautowalk.feedback.description": "Escolha onde o feedback deve ser exibido ao alternar Caminhada Automática.",
   "duperautowalk.feedback.none": "Nenhum",
   "duperautowalk.feedback.chat": "Chat",
   "duperautowalk.feedback.hud": "HUD",
 
-  "option.duperautowalk.position": "Posição do ícone de Caminhada Automática",
-  "option.duperautowalk.enabled.position": "Se ativado, o ícone de Caminhada Automática será exibido na posição selecionada.",
-  "duperautowalk.position.top_left": "Topo Esquerdo",
-  "duperautowalk.position.top_right": "Topo Direito",
-  "duperautowalk.position.middle_left": "Meio Esquerdo",
-  "duperautowalk.position.middle_right": "Meio Direito",
-  "duperautowalk.position.bottom_left": "Inferior Esquerdo",
-  "duperautowalk.position.bottom_right": "Inferior Direito"
+  "option.duperautowalk.position": "Posição do Ícone de Caminhada Automática",
+  "option.duperautowalk.position.description": "Se ativado, o Ícone de Caminhada Automática será exibido na posição selecionada.",
+  "duperautowalk.position.top_left": "Superior Esquerda",
+  "duperautowalk.position.top_right": "Superior Direita",
+  "duperautowalk.position.middle_left": "Meio Esquerda",
+  "duperautowalk.position.middle_right": "Meio Direita",
+  "duperautowalk.position.bottom_left": "Inferior Esquerda",
+  "duperautowalk.position.bottom_right": "Inferior Direita",
+  "duperautowalk.position.custom": "Personalizado",
+
+  "option.duperautowalk.size": "Tamanho do Ícone de Caminhada Automática",
+  "option.duperautowalk.size.description": "Escolha o tamanho do Ícone de Caminhada Automática.",
+  "duperautowalk.size.eight": "8x8",
+  "duperautowalk.size.sixteen": "16x16",
+  "duperautowalk.size.thirty_two": "32x32",
+  "duperautowalk.size.forty_eight": "48x48",
+  "duperautowalk.size.sixty_four": "64x64",
+
+  "option.duperautowalk.coordinates_x": "Coordenada X do Ícone de Caminhada Automática",
+  "option.duperautowalk.coordinates_y": "Coordenada Y do Ícone de Caminhada Automática",
+  "option.duperautowalk.coordinates_x.description": "A coordenada X do Ícone de Caminhada Automática.",
+  "option.duperautowalk.coordinates_y.description": "A coordenada Y do Ícone de Caminhada Automática."
 }

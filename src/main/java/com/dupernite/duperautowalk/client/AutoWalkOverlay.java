@@ -5,6 +5,7 @@ import com.dupernite.duperautowalk.compat.YACLconfig;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.ShaderProgram;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.RenderLayer;
@@ -34,29 +35,6 @@ public class AutoWalkOverlay implements HudRenderCallback {
 
             RenderSystem.setShaderTexture(0, TEXTURE);
             if(keyInputHandler.isOn && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.HUD){
-                switch (YACLconfig.getSize()) {
-                    case EIGHT -> {
-                        size_x = 8;
-                        size_y = 8;
-                    }
-                    case SIXTEEN -> {
-                        size_x = 16;
-                        size_y = 16;
-                    }
-                    case THIRTY_TWO -> {
-                        size_x = 32;
-                        size_y = 32;
-                    }
-                    case FORTY_EIGHT -> {
-                        size_x = 48;
-                        size_y = 48;
-                    }
-                    case SIXTY_FOUR -> {
-                        size_x = 64;
-                        size_y = 64;
-                    }
-                }
-
                 switch (YACLconfig.getPosition()) {
                     case BOTTOM_LEFT-> y = height - size_y - 1;
 
@@ -83,11 +61,27 @@ public class AutoWalkOverlay implements HudRenderCallback {
                         y = YACLconfig.getCoords_y();
                     }
                 }
-
+              
+                if(YACLconfig.getPosition() == YACLconfig.positionEnum.BOTTOM_LEFT){
+                    y = height - 17;
+                } else if(YACLconfig.getPosition() == YACLconfig.positionEnum.BOTTOM_RIGHT){
+                    x = width - 16;
+                    y = height - 17;
+                } else if(YACLconfig.getPosition() == YACLconfig.positionEnum.MIDDLE_LEFT){
+                    y = height / 2 - 8;
+                } else if(YACLconfig.getPosition() == YACLconfig.positionEnum.MIDDLE_RIGHT){
+                    x = width - 16;
+                    y = height / 2 - 8;
+                } else if(YACLconfig.getPosition() == YACLconfig.positionEnum.TOP_LEFT){
+                    y = 1;
+                } else if(YACLconfig.getPosition() == YACLconfig.positionEnum.TOP_RIGHT){
+                    x = width - 16;
+                    y = 1;
+                }
                 //? if <1.21.2
-                /*drawContext.drawTexture(TEXTURE, x, y, 0,0,size_x,size_y,size_x,size_y);*/
+                /*drawContext.drawTexture(TEXTURE, x, y, 0,0,16,16,16,16);*/
                 //? if >=1.21.2
-                drawContext.drawTexture(RenderLayer::getGuiTexturedOverlay,TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
+                drawContext.drawTexture(RenderLayer::getGuiTexturedOverlay, TEXTURE, x, y, 0,0,16,16,16,16);
             }
         }
     }

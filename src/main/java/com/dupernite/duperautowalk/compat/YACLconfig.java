@@ -43,7 +43,6 @@ public final class YACLconfig {
         HUD,
         CHAT
     }
-
     public enum sizeEnum {
         EIGHT,
         SIXTEEN,
@@ -54,7 +53,6 @@ public final class YACLconfig {
 
     /*@SerialEntry
     public static boolean enabled = true*/
-
     @SerialEntry
     public static positionEnum position = positionEnum.TOP_LEFT;
 
@@ -200,13 +198,6 @@ public final class YACLconfig {
     }
 
     public static Identifier screenshot(String type) {
-            /*if (Objects.equals(type, "toggle")) {
-                if (enabled) {
-                    return Identifier.of(MOD_ID, "textures/screenshots/top_left.webp");
-                } else {
-                    return Identifier.of(MOD_ID, "textures/screenshots/none.webp");
-                }
-            } else */
             if (Objects.equals(type, "position")) {
                 return Identifier.of(MOD_ID, "textures/screenshots/position/" + position.toString().toLowerCase() + ".webp");
             } else if (Objects.equals(type, "feedback")) {

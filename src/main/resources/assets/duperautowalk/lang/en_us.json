@@ -1,7 +1,7 @@
 {
   "key.category": "Duper's Utils",
   "key.duperautowalk.autowalk": "Auto Walk",
-  "key.duperautowalk.key.duperautowalk.config": "Auto Walk Config",
+  "key.duperautowalk.config": "Auto Walk Config",
 
   "chat.duperautowalk.autowalk.enabled": "Auto Walking is now enabled.",
   "chat.duperautowalk.autowalk.disabled": "Auto Walking is now disabled.",

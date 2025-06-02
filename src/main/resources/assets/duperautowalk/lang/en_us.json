@@ -1,23 +1,19 @@
 {
-  "key.category": "Duper's Utils",
-  "key.duperautowalk.autowalk": "Auto Walk",
-  "key.duperautowalk.config": "Auto Walk Config",
-
-  "chat.duperautowalk.autowalk.enabled": "Auto Walking is now enabled.",
-  "chat.duperautowalk.autowalk.disabled": "Auto Walking is now disabled.",
-
+  "key.category.duperautowalk": "Duper's AutoWalk",
+  "key.duperautowalk.autowalk": "Toggle Auto Walk",
+  "key.duperautowalk.config": "Open Configuration",
+  "chat.duperautowalk.autowalk.enabled": "AutoWalk enabled",
+  "chat.duperautowalk.autowalk.disabled": "AutoWalk disabled",
+  "config.duperautowalk.title": "Duper's AutoWalk Configuration",
   "category.duperautowalk.general": "General",
   "category.duperautowalk.position": "Position",
-  "config.duperautowalk.title": "Auto Walk",
-
-  "option.duperautowalk.feedback": "Where should the feedback be displayed?",
-  "option.duperautowalk.feedback.description": "Choose where the feedback should be displayed when toggling Auto Walk.",
+  "option.duperautowalk.feedback": "Feedback Type",
+  "option.duperautowalk.feedback.description": "How AutoWalk will notify you when toggled",
   "duperautowalk.feedback.none": "None",
-  "duperautowalk.feedback.chat": "Chat",
   "duperautowalk.feedback.hud": "HUD",
-
-  "option.duperautowalk.position": "Position of the Auto Walk Icon",
-  "option.duperautowalk.position.description": "If enabled, the Auto Walk Icon will be displayed at the selected position.",
+  "duperautowalk.feedback.chat": "Chat",
+  "option.duperautowalk.position": "Icon Position",
+  "option.duperautowalk.position.description": "Where to display the AutoWalk icon",
   "duperautowalk.position.top_left": "Top Left",
   "duperautowalk.position.top_right": "Top Right",
   "duperautowalk.position.middle_left": "Middle Left",
@@ -25,17 +21,15 @@
   "duperautowalk.position.bottom_left": "Bottom Left",
   "duperautowalk.position.bottom_right": "Bottom Right",
   "duperautowalk.position.custom": "Custom",
-
-  "option.duperautowalk.size": "Size of the Auto Walk Icon",
-  "option.duperautowalk.size.description": "Choose the size of the Auto Walk Icon.",
+  "option.duperautowalk.size": "Icon Size",
+  "option.duperautowalk.size.description": "Size of the AutoWalk icon",
   "duperautowalk.size.eight": "8x8",
   "duperautowalk.size.sixteen": "16x16",
   "duperautowalk.size.thirty_two": "32x32",
   "duperautowalk.size.forty_eight": "48x48",
   "duperautowalk.size.sixty_four": "64x64",
-
-  "option.duperautowalk.coordinates_x": "X Coordinate of the Auto Walk Icon",
-  "option.duperautowalk.coordinates_y": "Y Coordinate of the Auto Walk Icon",
-  "option.duperautowalk.coordinates_x.description": "The X coordinate of the Auto Walk Icon.",
-  "option.duperautowalk.coordinates_y.description": "The Y coordinate of the Auto Walk Icon."
+  "option.duperautowalk.coordinates_x": "X Coordinate",
+  "option.duperautowalk.coordinates_x.description": "X position for custom placement",
+  "option.duperautowalk.coordinates_y": "Y Coordinate",
+  "option.duperautowalk.coordinates_y.description": "Y position for custom placement"
 }

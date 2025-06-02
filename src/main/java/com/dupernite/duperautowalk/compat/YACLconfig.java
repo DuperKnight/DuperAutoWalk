@@ -6,10 +6,10 @@ import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
 import dev.isxander.yacl3.gui.controllers.cycling.EnumController;
 import dev.isxander.yacl3.gui.controllers.string.number.IntegerFieldController;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
 import java.util.Objects;
@@ -66,15 +66,13 @@ public final class YACLconfig {
     public static int coords_x = 16;
 
     @SerialEntry
-    public static int coords_y = 16;
-
-    public static Screen createScreen(Screen parent) {
+    public static int coords_y = 16;    public static Screen createScreen(Screen parent) {
         return YetAnotherConfigLib.create(YACLconfig.GSON, ((defaults, config, builder) -> {
             var defaultCategoryBuilder = ConfigCategory.createBuilder()
-                    .name(Text.translatable("category.duperautowalk.general"));
+                    .name(Component.translatable("category.duperautowalk.general"));
 
             var positionCateoryBuilder = ConfigCategory.createBuilder()
-                    .name(Text.translatable("category.duperautowalk.position"));
+                    .name(Component.translatable("category.duperautowalk.position"));
 
             var feedback = createOptionWithImage(
                     "option.duperautowalk.feedback",
@@ -83,7 +81,7 @@ public final class YACLconfig {
                     YACLconfig.feedback,
                     () -> YACLconfig.feedback,
                     val -> YACLconfig.feedback = val,
-                    enumOption -> new EnumController<>(enumOption, v -> Text.translatable(MOD_ID + ".feedback." + v.toString().toLowerCase()), feedbackEnum.values())
+                    enumOption -> new EnumController<>(enumOption, v -> Component.translatable(MOD_ID + ".feedback." + v.toString().toLowerCase()), feedbackEnum.values())
             );
 
             var position = createOptionWithImage(
@@ -93,7 +91,7 @@ public final class YACLconfig {
                     YACLconfig.position,
                     () -> YACLconfig.position,
                     val -> YACLconfig.position = val,
-                    enumOption -> new EnumController<>(enumOption, v -> Text.translatable(MOD_ID + ".position." + v.toString().toLowerCase()), positionEnum.values())
+                    enumOption -> new EnumController<>(enumOption, v -> Component.translatable(MOD_ID + ".position." + v.toString().toLowerCase()), positionEnum.values())
             );
 
             var size = createOption(
@@ -102,7 +100,7 @@ public final class YACLconfig {
                     YACLconfig.size,
                     () -> YACLconfig.size,
                     val -> YACLconfig.size = val,
-                    enumOption -> new EnumController<>(enumOption, v -> Text.translatable(MOD_ID + ".size." + v.toString().toLowerCase()), sizeEnum.values())
+                    enumOption -> new EnumController<>(enumOption, v -> Component.translatable(MOD_ID + ".size." + v.toString().toLowerCase()), sizeEnum.values())
             );
 
             var coords_x = createOption(
@@ -111,7 +109,7 @@ public final class YACLconfig {
                     YACLconfig.coords_x,
                     () -> YACLconfig.coords_x,
                     val -> YACLconfig.coords_x = val,
-                    intOption -> new IntegerFieldController(intOption, 0, MinecraftClient.getInstance().getWindow().getScaledWidth())
+                    intOption -> new IntegerFieldController(intOption, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth())
             );
 
             var coords_y = createOption(
@@ -120,18 +118,17 @@ public final class YACLconfig {
                     YACLconfig.coords_y,
                     () -> YACLconfig.coords_y,
                     val -> YACLconfig.coords_y = val,
-                    intOption -> new IntegerFieldController(intOption, 0, MinecraftClient.getInstance().getWindow().getScaledWidth())
+                    intOption -> new IntegerFieldController(intOption, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth())
             );
 
             return builder
-                    .title(Text.translatable("config.duperautowalk.title"))
+                    .title(Component.translatable("config.duperautowalk.title"))
                     .categories(
                             List.of(
                                     defaultCategoryBuilder.options(List.of(feedback, size)).build(),
                                     positionCateoryBuilder.options(List.of(position, coords_x, coords_y)).build()
                             )
                     );
-
         })).generateScreen(parent);
     }
 
@@ -145,11 +142,11 @@ public final class YACLconfig {
             Function<Option<T>, Controller<T>> customController
     ) {
         return Option.<T>createBuilder()
-                .name(Text.translatable(name))
+                .name(Component.translatable(name))
                 .description(
                         OptionDescription.createBuilder()
                                 .webpImage(screenshot(type))
-                                .text(Text.translatable(description))
+                                .text(Component.translatable(description))
                                 .build()
                 )
                 .binding(defaultValue, currentValue, newValue)
@@ -166,10 +163,10 @@ public final class YACLconfig {
             Function<Option<T>, Controller<T>> customController
     ) {
         return Option.<T>createBuilder()
-                .name(Text.translatable(name))
+                .name(Component.translatable(name))
                 .description(
                         OptionDescription.createBuilder()
-                                .text(Text.translatable(description))
+                                .text(Component.translatable(description))
                                 .build()
                 )
                 .binding(defaultValue, currentValue, newValue)
@@ -197,11 +194,11 @@ public final class YACLconfig {
         return coords_y;
     }
 
-    public static Identifier screenshot(String type) {
+    public static ResourceLocation screenshot(String type) {
             if (Objects.equals(type, "position")) {
-                return Identifier.of(MOD_ID, "textures/screenshots/position/" + position.toString().toLowerCase() + ".webp");
+                return ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/screenshots/position/" + position.toString().toLowerCase() + ".webp");
             } else if (Objects.equals(type, "feedback")) {
-                return Identifier.of(MOD_ID, "textures/screenshots/feedback/" + feedback.toString().toLowerCase() + ".webp");
+                return ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/screenshots/feedback/" + feedback.toString().toLowerCase() + ".webp");
             }
         return null;
     }

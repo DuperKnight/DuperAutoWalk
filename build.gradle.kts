@@ -1,5 +1,7 @@
+import org.gradle.api.tasks.bundling.Jar
+
 plugins {
-    id("fabric-loom") version "1.10-SNAPSHOT"
+    id("net.neoforged.gradle.userdev") version "7.0.163"
     id("maven-publish")
 }
 
@@ -10,61 +12,37 @@ base {
     archivesName.set(project.property("archives_base_name").toString())
 }
 
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
 repositories {
+    mavenCentral()
     maven {
-        name = "Terraformers"
-        url = uri("https://maven.terraformersmc.com/")
+        name = "NeoForged"
+        url = uri("https://maven.neoforged.net/releases")
     }
     maven {
         name = "Xander Maven"
         url = uri("https://maven.isxander.dev/releases")
     }
+    maven {
+        name = "TDark's Maven"
+        url = uri("https://thedarkcolour.github.io/KotlinForForge/")
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("org.ow2.asm:asm-analysis:9.7")
+        force("org.ow2.asm:asm-commons:9.7")
+        force("org.ow2.asm:asm-tree:9.7")
+        force("org.ow2.asm:asm-util:9.7")
+        force("org.ow2.asm:asm:9.7")
+    }
 }
 
 dependencies {
-    // The minecraft configuration is defined by the fabric-loom plugin.
-    minecraft("com.mojang:minecraft:${stonecutter.current.project}")
-    mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
-    modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
-    modImplementation("com.terraformersmc:modmenu:${property("modmenu_version")}")
-    modImplementation("dev.isxander:yet-another-config-lib:${property("yacl_version")}")
-}
-
-tasks.processResources {
-    val loaderVersion = project.findProperty("loader_version") as? String
-        ?: throw GradleException("Property loader_version is not defined")
-
-    inputs.property("minecraft_version", stonecutter.current.project)
-    inputs.property("loader_version", loaderVersion)
-    inputs.property("version", version)
-
-    filesMatching("fabric.mod.json") {
-        expand(
-            "minecraft_version" to stonecutter.current.version,
-            "version" to version,
-            "loader_version" to loaderVersion
-        )
-    }
-}
-
-val targetJavaVersion = 17
-tasks.withType<JavaCompile>().configureEach {
-    options.encoding = "UTF-8"
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible) {
-        options.release.set(targetJavaVersion)
-    }
-}
-
-java {
-    withSourcesJar()
-    val javaVersion = if (stonecutter.eval(project.property("minecraft_version").toString(), ">=1.20.5")) {
-        JavaVersion.VERSION_21
-    } else {
-        JavaVersion.VERSION_17
-    }
-    targetCompatibility = javaVersion
-    sourceCompatibility = javaVersion
+    implementation("net.neoforged:neoforge:${property("neoforge_version")}")
+    implementation("dev.isxander:yet-another-config-lib:${property("yacl_version")}")
 }
 
 tasks.jar {
@@ -75,17 +53,8 @@ tasks.jar {
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>("maven") {
             from(components["java"])
         }
-    }
-    repositories {
-        // Add your publishing repositories here.
-    }
-}
-
-loom {
-    runConfigs.configureEach {
-        runDir = "../../run"
     }
 }

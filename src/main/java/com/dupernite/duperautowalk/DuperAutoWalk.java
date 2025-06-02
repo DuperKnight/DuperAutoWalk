@@ -1,19 +1,14 @@
 package com.dupernite.duperautowalk;
 
 import com.dupernite.duperautowalk.compat.YACLconfig;
-import dev.isxander.yacl3.api.YetAnotherConfigLib;
-import net.minecraft.client.gui.screens.Screen;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.function.Supplier;
 
 @Mod(DuperAutoWalk.MOD_ID)
 public class DuperAutoWalk {

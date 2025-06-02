@@ -60,8 +60,6 @@ publishing {
     }
 }
 
-val modVersion = property("version") as String
-
 tasks.register<Copy>("buildAndCollect") {
     group = "build"
     from(tasks.jar.get().archiveFile)
@@ -75,7 +73,6 @@ tasks.register<Copy>("buildAndCollect") {
     }
 }
 
-// Alias task for the original collectChiseledJars command
 tasks.register("collectChiseledJars") {
     group = "distribution"
     description = "Collect chiseled jars from all versions (alias for chiseledBuildAndCollect)"

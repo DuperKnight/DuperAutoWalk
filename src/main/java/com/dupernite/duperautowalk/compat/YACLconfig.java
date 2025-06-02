@@ -66,7 +66,9 @@ public final class YACLconfig {
     public static int coords_x = 16;
 
     @SerialEntry
-    public static int coords_y = 16;    public static Screen createScreen(Screen parent) {
+    public static int coords_y = 16;
+
+    public static Screen createScreen(Screen parent) {
         return YetAnotherConfigLib.create(YACLconfig.GSON, ((defaults, config, builder) -> {
             var defaultCategoryBuilder = ConfigCategory.createBuilder()
                     .name(Component.translatable("category.duperautowalk.general"));
@@ -74,7 +76,7 @@ public final class YACLconfig {
             var positionCateoryBuilder = ConfigCategory.createBuilder()
                     .name(Component.translatable("category.duperautowalk.position"));
 
-            var feedback = createOptionWithImage(
+            var feedbackOption = createOptionWithImage(
                     "option.duperautowalk.feedback",
                     "option.duperautowalk.feedback.description",
                     "feedback",
@@ -84,7 +86,7 @@ public final class YACLconfig {
                     enumOption -> new EnumController<>(enumOption, v -> Component.translatable(MOD_ID + ".feedback." + v.toString().toLowerCase()), feedbackEnum.values())
             );
 
-            var position = createOptionWithImage(
+            var positionOption = createOptionWithImage(
                     "option.duperautowalk.position",
                     "option.duperautowalk.position.description",
                     "position",
@@ -94,7 +96,7 @@ public final class YACLconfig {
                     enumOption -> new EnumController<>(enumOption, v -> Component.translatable(MOD_ID + ".position." + v.toString().toLowerCase()), positionEnum.values())
             );
 
-            var size = createOption(
+            var sizeOption = createOption(
                     "option.duperautowalk.size",
                     "option.duperautowalk.size.description",
                     YACLconfig.size,
@@ -103,7 +105,7 @@ public final class YACLconfig {
                     enumOption -> new EnumController<>(enumOption, v -> Component.translatable(MOD_ID + ".size." + v.toString().toLowerCase()), sizeEnum.values())
             );
 
-            var coords_x = createOption(
+            var coordsXOption = createOption(
                     "option.duperautowalk.coordinates_x",
                     "option.duperautowalk.coordinates_x.description",
                     YACLconfig.coords_x,
@@ -112,7 +114,7 @@ public final class YACLconfig {
                     intOption -> new IntegerFieldController(intOption, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth())
             );
 
-            var coords_y = createOption(
+            var coordsYOption = createOption(
                     "option.duperautowalk.coordinates_y",
                     "option.duperautowalk.coordinates_y.description",
                     YACLconfig.coords_y,
@@ -125,8 +127,8 @@ public final class YACLconfig {
                     .title(Component.translatable("config.duperautowalk.title"))
                     .categories(
                             List.of(
-                                    defaultCategoryBuilder.options(List.of(feedback, size)).build(),
-                                    positionCateoryBuilder.options(List.of(position, coords_x, coords_y)).build()
+                                    defaultCategoryBuilder.options(List.of(feedbackOption, sizeOption)).build(),
+                                    positionCateoryBuilder.options(List.of(positionOption, coordsXOption, coordsYOption)).build()
                             )
                     );
         })).generateScreen(parent);

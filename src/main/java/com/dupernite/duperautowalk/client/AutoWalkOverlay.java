@@ -24,8 +24,8 @@ public class AutoWalkOverlay {
 
         RenderSystem.setShaderColor(1, 1, 1, 1);
         //? if <=1.21.1 {
-        /*RenderSystem.setShaderTexture(0, TEXTURE);
-        *///?}
+        RenderSystem.setShaderTexture(0, TEXTURE);
+        //?}
 
         if (ClientTickHandler.isOn && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.HUD) {
             switch (YACLconfig.getPosition()) {
@@ -74,10 +74,10 @@ public class AutoWalkOverlay {
             }
 
             //? if <=1.21.1 {
-            /*guiGraphics.blit(TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
-            *///?} else {
-            guiGraphics.blit(RenderType::guiTextured, TEXTURE, x, y, 0.0f, 0.0f, size_x, size_y, 16, 16);
-            //?}
+            guiGraphics.blit(TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
+            //?} else {
+            /*guiGraphics.blit(RenderType::guiTextured, TEXTURE, x, y, 0.0f, 0.0f, size_x, size_y, 16, 16);
+            *///?}
         }
     }
 }

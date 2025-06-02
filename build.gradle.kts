@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.bundling.Jar
 
 plugins {
@@ -57,4 +58,26 @@ publishing {
             from(components["java"])
         }
     }
+}
+
+val modVersion = property("version") as String
+
+tasks.register<Copy>("buildAndCollect") {
+    group = "build"
+    from(tasks.jar.get().archiveFile)
+    into(rootProject.layout.buildDirectory.dir("chiseled-jars"))
+    dependsOn("build")
+
+    rename { originalName ->
+        val mcVersion = stonecutter.current.project
+        val baseName = originalName.substringBeforeLast(".jar")
+        "${baseName}-${mcVersion}+neoforge.jar"
+    }
+}
+
+// Alias task for the original collectChiseledJars command
+tasks.register("collectChiseledJars") {
+    group = "distribution"
+    description = "Collect chiseled jars from all versions (alias for chiseledBuildAndCollect)"
+    dependsOn(":chiseledBuildAndCollect")
 }

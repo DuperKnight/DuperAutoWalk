@@ -57,14 +57,14 @@ public class keyInputHandler {
 
     public static void register() {
         autoWalkKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                KEY_AUTO_WALK,
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_Z,
-                CATEGORY
+                        KEY_AUTO_WALK,
+                        InputUtil.Type.KEYSYM,
+                        GLFW.GLFW_KEY_Z,
+                        CATEGORY
                 )
         );
         configKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                KEY_OPEN_CONFIG,
+                        KEY_OPEN_CONFIG,
                         InputUtil.Type.KEYSYM,
                         GLFW.GLFW_KEY_UNKNOWN,
                         CATEGORY

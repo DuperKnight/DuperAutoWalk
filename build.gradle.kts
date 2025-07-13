@@ -35,13 +35,22 @@ tasks.processResources {
     val loaderVersion = project.findProperty("loader_version") as? String
         ?: throw GradleException("Property loader_version is not defined")
 
-    inputs.property("minecraft_version", stonecutter.current.project)
+    val minecraftVersionRange = when (stonecutter.current.project) {
+        "1.21" -> ">=1.21 <1.21.2"
+        "1.21.2" -> ">=1.21.2 <1.21.4"
+        "1.21.4" -> "1.21.4"
+        "1.21.5" -> "1.21.5"
+        "1.21.6" -> ">=1.21.6 <1.21.8"
+        else -> stonecutter.current.project
+    }
+
+    inputs.property("minecraft_version", minecraftVersionRange)
     inputs.property("loader_version", loaderVersion)
     inputs.property("version", version)
 
     filesMatching("fabric.mod.json") {
         expand(
-            "minecraft_version" to stonecutter.current.version,
+            "minecraft_version" to minecraftVersionRange,
             "version" to version,
             "loader_version" to loaderVersion
         )

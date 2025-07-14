@@ -34,7 +34,7 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.$GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Upload JAR assets
         run: |
@@ -46,4 +46,4 @@ jobs:
               "${{ steps.create_release.outputs.upload_url }}?name=$(basename "$jar")"
           done
         env:
-          GITHUB_TOKEN: ${{ secrets.$GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

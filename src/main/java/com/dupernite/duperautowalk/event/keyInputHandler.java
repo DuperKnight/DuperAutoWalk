@@ -7,7 +7,11 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
 
+//? if <1.21.6 {
 @EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+//?} else {
+/*@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT)
+ *///?}
 public class keyInputHandler {
     public static final String CATEGORY = "key.category";
     public static final String KEY_AUTO_WALK = "key.duperautowalk.autowalk";

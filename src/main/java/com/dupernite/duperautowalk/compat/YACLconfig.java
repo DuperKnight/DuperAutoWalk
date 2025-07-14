@@ -147,7 +147,6 @@ public final class YACLconfig {
                 .name(Component.translatable(name))
                 .description(
                         OptionDescription.createBuilder()
-                                .webpImage(screenshot(type))
                                 .text(Component.translatable(description))
                                 .build()
                 )
@@ -194,14 +193,5 @@ public final class YACLconfig {
 
     public static int getCoords_y(){
         return coords_y;
-    }
-
-    public static ResourceLocation screenshot(String type) {
-            if (Objects.equals(type, "position")) {
-                return ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/screenshots/position/" + position.toString().toLowerCase() + ".webp");
-            } else if (Objects.equals(type, "feedback")) {
-                return ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/screenshots/feedback/" + feedback.toString().toLowerCase() + ".webp");
-            }
-        return null;
     }
 }

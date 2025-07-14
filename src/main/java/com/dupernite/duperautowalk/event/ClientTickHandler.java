@@ -9,7 +9,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 
+//? if <1.21.6 {
 @EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
+//?} else {
+/*@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT)
+*///?}
 public class ClientTickHandler {
     public static boolean isOn = false;
     private static boolean ForwardKeyState = false;

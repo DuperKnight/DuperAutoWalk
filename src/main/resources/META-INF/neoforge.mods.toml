@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="duperautowalk"
-version="0.1.4"
+version="${modVersion}"
 displayName="Duper's AutoWalk"
 description="A simple mod that allows you to walk without holding the forward key."
 authors="Dupernite"
@@ -21,13 +21,13 @@ side="BOTH"
 [[dependencies.duperautowalk]]
 modId="minecraft"
 type="required"
-versionRange="[1.21,1.22)"
+versionRange="${mcVersionRange}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.duperautowalk]]
 modId="yet_another_config_lib_v3"
 type="required"
-versionRange="[3.6.6,)"
+versionRange="[3.7.1,)"
 ordering="NONE"
 side="BOTH"

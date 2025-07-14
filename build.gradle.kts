@@ -1,7 +1,7 @@
 import org.gradle.api.tasks.Copy
-import org.gradle.api.tasks.bundling.Jar
 
 plugins {
+    id("dev.kikugie.stonecutter")
     id("net.neoforged.gradle.userdev") version "7.0.163"
     id("maven-publish")
 }
@@ -60,6 +60,8 @@ publishing {
     }
 }
 
+version = "${project.version}+${stonecutter.current.project}"
+
 tasks.register<Copy>("buildAndCollect") {
     group = "build"
     from(tasks.jar.get().archiveFile)
@@ -67,9 +69,8 @@ tasks.register<Copy>("buildAndCollect") {
     dependsOn("build")
 
     rename { originalName ->
-        val mcVersion = stonecutter.current.project
         val baseName = originalName.substringBeforeLast(".jar")
-        "${baseName}-${mcVersion}+neoforge.jar"
+        "${baseName}-neoforge.jar"
     }
 }
 
@@ -77,4 +78,23 @@ tasks.register("collectChiseledJars") {
     group = "distribution"
     description = "Collect chiseled jars from all versions (alias for chiseledBuildAndCollect)"
     dependsOn(":chiseledBuildAndCollect")
+}
+
+// Utility to map Minecraft project versions into versionRange strings
+fun getMcVersionRange(mcVersion: String): String = when(mcVersion) {
+    "1.21", "1.21.1" -> "[1.21,1.21.1]"
+    "1.21.2", "1.21.3" -> "[1.21.2,1.21.3]"
+    "1.21.4" -> "[1.21.4]"
+    "1.21.5" -> "[1.21.5]"
+    "1.21.6", "1.21.7" -> "[1.21.6,1.21.7]"
+    else -> mcVersion
+}
+
+tasks.processResources {
+    filesMatching("**/META-INF/neoforge.mods.toml") {
+        expand(
+            "modVersion" to project.version,
+            "mcVersionRange" to getMcVersionRange(stonecutter.current.project)
+        )
+    }
 }

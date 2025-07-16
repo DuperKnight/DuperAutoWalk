@@ -98,15 +98,14 @@ loom {
 
 tasks.register<Copy>("buildAndCollect") {
     group = "build"
-    from(tasks.jar.get().archiveFile)
+    dependsOn(tasks.named("remapJar"))
+    from(tasks.named("remapJar").get().outputs.files)
     into(rootProject.layout.buildDirectory.dir("chiseled-jars"))
-    dependsOn("build")
-
     rename { originalName ->
         val baseName = originalName
             .substringBeforeLast(".jar")
             .replace("-dev", "")
-        "$baseName-fabric.jar"
+        "${baseName}-fabric.jar"
     }
 }
 

@@ -1,9 +1,10 @@
 plugins {
     id("fabric-loom") version "1.10-SNAPSHOT"
     id("maven-publish")
+    id("dev.kikugie.stonecutter") version "0.6"
 }
 
-version = project.property("version").toString()
+version = "${property("version")}+${stonecutter.current.project}"
 group = project.property("maven_group").toString()
 
 base {
@@ -22,7 +23,6 @@ repositories {
 }
 
 dependencies {
-    // The minecraft configuration is defined by the fabric-loom plugin.
     minecraft("com.mojang:minecraft:${stonecutter.current.project}")
     mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
     modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
@@ -32,15 +32,15 @@ dependencies {
 }
 
 tasks.processResources {
-    val loaderVersion = project.findProperty("loader_version") as? String
+    val loaderVersion = findProperty("loader_version") as? String
         ?: throw GradleException("Property loader_version is not defined")
 
     val minecraftVersionRange = when (stonecutter.current.project) {
-        "1.21" -> ">=1.21 <1.21.2"
-        "1.21.2" -> ">=1.21.2 <1.21.4"
+        "1.21.1" -> ">=1.21 <1.21.2"
+        "1.21.3" -> ">=1.21.2 <1.21.4"
         "1.21.4" -> "1.21.4"
         "1.21.5" -> "1.21.5"
-        "1.21.6" -> ">=1.21.6 <1.21.8"
+        "1.21.7" -> ">=1.21.6 <1.21.8"
         else -> stonecutter.current.project
     }
 
@@ -67,11 +67,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 java {
     withSourcesJar()
-    val javaVersion = if (stonecutter.eval(project.property("minecraft_version").toString(), ">=1.20.5")) {
-        JavaVersion.VERSION_21
-    } else {
-        JavaVersion.VERSION_17
-    }
+    val javaVersion = JavaVersion.VERSION_21
     targetCompatibility = javaVersion
     sourceCompatibility = javaVersion
 }
@@ -97,4 +93,25 @@ loom {
     runConfigs.configureEach {
         runDir = "../../run"
     }
+}
+
+
+tasks.register<Copy>("buildAndCollect") {
+    group = "build"
+    from(tasks.jar.get().archiveFile)
+    into(rootProject.layout.buildDirectory.dir("chiseled-jars"))
+    dependsOn("build")
+
+    rename { originalName ->
+        val baseName = originalName
+            .substringBeforeLast(".jar")
+            .replace("-dev", "")
+        "$baseName-fabric.jar"
+    }
+}
+
+tasks.register("collectChiseledJars") {
+    group = "distribution"
+    description = "Collect chiseled jars from all versions (alias for chiseledBuildAndCollect)"
+    dependsOn(":chiseledBuildAndCollect")
 }

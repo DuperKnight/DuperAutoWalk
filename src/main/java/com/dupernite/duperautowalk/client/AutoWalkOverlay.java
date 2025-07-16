@@ -9,17 +9,17 @@ import com.dupernite.duperautowalk.event.keyInputHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 //? if >1.21.5 {
-import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement;
+/*import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.client.gl.RenderPipelines;
-//?}
-//? if >=1.21.2 && <1.21.6 {
-/*import net.minecraft.client.render.RenderLayer;
 *///?}
+//? if >=1.21.2 && <1.21.6 {
+import net.minecraft.client.render.RenderLayer;
+//?}
 
 //? if <1.21.6 {
-/*public class AutoWalkOverlay implements HudRenderCallback {
+public class AutoWalkOverlay implements HudRenderCallback {
     private static final Identifier TEXTURE = Identifier.of(DuperAutoWalk.MOD_ID,
             "textures/gui/autowalk.png");
 
@@ -86,16 +86,16 @@ import net.minecraft.client.gl.RenderPipelines;
                     }
                 }
                 //? if <1.21.2 {
-                /^drawContext.drawTexture(TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
-                ^///?} else {
+                /*drawContext.drawTexture(TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
+                *///?} else {
                 drawContext.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
                 //?}
             }
         }
     }
 }
-*///?} else {
-public class AutoWalkOverlay implements HudElement {
+//?} else {
+/*public class AutoWalkOverlay implements HudElement {
     private static final Identifier TEXTURE = Identifier.of(DuperAutoWalk.MOD_ID,
             "textures/gui/autowalk.png");
 
@@ -113,28 +113,6 @@ public class AutoWalkOverlay implements HudElement {
             int y = 0;
             int size_x = 16;
             int size_y = 16;
-
-            switch (YACLconfig.getPosition()) {
-                case BOTTOM_LEFT-> y = height - size_y - 1;
-                case BOTTOM_RIGHT -> {
-                    x = width - size_x - 1;
-                    y = height - size_y - 1;
-                }
-                case MIDDLE_LEFT -> y = height / 2 - size_y / 2;
-                case MIDDLE_RIGHT -> {
-                    x = width - size_x - 1;
-                    y = height / 2 - size_y / 2;
-                }
-                case TOP_LEFT -> y = 1;
-                case TOP_RIGHT -> {
-                    x = width - size_x - 1;
-                    y = 1;
-                }
-                case CUSTOM -> {
-                    x = YACLconfig.getCoords_x();
-                    y = YACLconfig.getCoords_y();
-                }
-            }
 
             switch (YACLconfig.getSize()) {
                 case EIGHT -> {
@@ -159,8 +137,30 @@ public class AutoWalkOverlay implements HudElement {
                 }
             }
 
+            switch (YACLconfig.getPosition()) {
+                case BOTTOM_LEFT-> y = height - size_y - 1;
+                case BOTTOM_RIGHT -> {
+                    x = width - size_x - 1;
+                    y = height - size_y - 1;
+                }
+                case MIDDLE_LEFT -> y = height / 2 - size_y / 2;
+                case MIDDLE_RIGHT -> {
+                    x = width - size_x - 1;
+                    y = height / 2 - size_y / 2;
+                }
+                case TOP_LEFT -> y = 1;
+                case TOP_RIGHT -> {
+                    x = width - size_x - 1;
+                    y = 1;
+                }
+                case CUSTOM -> {
+                    x = YACLconfig.getCoords_x();
+                    y = YACLconfig.getCoords_y();
+                }
+            }
+
             drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
         }
     }
 }
-//?}
+*///?}

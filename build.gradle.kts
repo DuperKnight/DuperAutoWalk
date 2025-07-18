@@ -2,7 +2,7 @@ import org.gradle.api.tasks.Copy
 
 plugins {
     id("dev.kikugie.stonecutter")
-    id("net.neoforged.gradle.userdev") version "7.0.163"
+    id("net.neoforged.gradle.userdev") version "7.0.176"
     id("maven-publish")
 }
 
@@ -86,7 +86,7 @@ fun getMcVersionRange(mcVersion: String): String = when(mcVersion) {
     "1.21.2", "1.21.3" -> "[1.21.2,1.21.3]"
     "1.21.4" -> "[1.21.4]"
     "1.21.5" -> "[1.21.5]"
-    "1.21.6", "1.21.7" -> "[1.21.6,1.21.7]"
+    "1.21.8" -> "[1.21.6,1.21.8]"
     else -> mcVersion
 }
 

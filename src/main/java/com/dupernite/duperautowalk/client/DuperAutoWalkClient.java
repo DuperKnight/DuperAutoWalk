@@ -7,10 +7,10 @@ import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 //? if <1.21.6 {
-@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
-//?} else {
-/*@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT)
- *///?}
+/*@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+*///?} else {
+@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT)
+ //?}
 public class DuperAutoWalkClient {
     @SubscribeEvent
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {

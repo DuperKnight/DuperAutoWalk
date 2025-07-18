@@ -10,8 +10,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
 //? if >=1.21.6 {
-/*import net.minecraft.client.renderer.RenderPipelines;
-*///?}
+import net.minecraft.client.renderer.RenderPipelines;
+//?}
 
 public class AutoWalkOverlay {
     private static final ResourceLocation TEXTURE = ResourceLocation.parse(DuperAutoWalk.MOD_ID + ":textures/gui/autowalk.png");
@@ -27,8 +27,8 @@ public class AutoWalkOverlay {
         int size_y = 16;
 
         //? if <=1.21.1 {
-        RenderSystem.setShaderTexture(0, TEXTURE);
-        //?} else if <1.21.6 {
+        /*RenderSystem.setShaderTexture(0, TEXTURE);
+        *///?} else if <1.21.6 {
         /*RenderSystem.setShaderColor(1, 1, 1, 1);
         *///?}
 
@@ -79,12 +79,12 @@ public class AutoWalkOverlay {
             }
 
             //? if <=1.21.1 {
-            guiGraphics.blit(TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
-            //?} else if <1.21.6 {
+            /*guiGraphics.blit(TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
+            *///?} else if <1.21.6 {
             /*guiGraphics.blit(RenderType::guiTextured, TEXTURE, x, y, 0.0f, 0.0f, size_x, size_y, 16, 16);
             *///?} else {
-            /*guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
-            *///?}
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, size_x, size_y, size_x, size_y);
+            //?}
         }
     }
 }

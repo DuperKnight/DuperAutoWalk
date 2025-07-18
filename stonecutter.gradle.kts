@@ -1,10 +1,9 @@
 plugins {
     id("dev.kikugie.stonecutter")
 }
+stonecutter active "1.21.8"
 
-stonecutter active "1.21.1"
-
-stonecutter registerChiseled tasks.register("chiseledBuildAndCollect", stonecutter.chiseled) {
+stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) { 
     group = "project"
-    ofTask("buildAndCollect")
+    ofTask("build")
 }

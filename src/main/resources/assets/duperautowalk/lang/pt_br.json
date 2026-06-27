@@ -2,20 +2,16 @@
   "key.category": "Duper's Utils",
   "key.duperautowalk.autowalk": "Caminhada Automática",
   "key.duperautowalk.config": "Configuração de Caminhada Automática",
-
   "chat.duperautowalk.autowalk.enabled": "Caminhada Automática está agora ativada.",
   "chat.duperautowalk.autowalk.disabled": "Caminhada Automática está agora desativada.",
-
   "category.duperautowalk.general": "Geral",
   "category.duperautowalk.position": "Posição",
-  "config.duperautowalk.title": "Caminhada Automática",
-
+  "config.duperautowalk.title": "Duper's Auto Walk",
   "option.duperautowalk.feedback": "Onde o feedback deve ser exibido?",
   "option.duperautowalk.feedback.description": "Escolha onde o feedback deve ser exibido ao alternar Caminhada Automática.",
   "duperautowalk.feedback.none": "Nenhum",
   "duperautowalk.feedback.chat": "Chat",
   "duperautowalk.feedback.hud": "HUD",
-
   "option.duperautowalk.position": "Posição do Ícone de Caminhada Automática",
   "option.duperautowalk.position.description": "Se ativado, o Ícone de Caminhada Automática será exibido na posição selecionada.",
   "duperautowalk.position.top_left": "Superior Esquerda",
@@ -25,7 +21,6 @@
   "duperautowalk.position.bottom_left": "Inferior Esquerda",
   "duperautowalk.position.bottom_right": "Inferior Direita",
   "duperautowalk.position.custom": "Personalizado",
-
   "option.duperautowalk.size": "Tamanho do Ícone de Caminhada Automática",
   "option.duperautowalk.size.description": "Escolha o tamanho do Ícone de Caminhada Automática.",
   "duperautowalk.size.eight": "8x8",
@@ -33,9 +28,16 @@
   "duperautowalk.size.thirty_two": "32x32",
   "duperautowalk.size.forty_eight": "48x48",
   "duperautowalk.size.sixty_four": "64x64",
-
   "option.duperautowalk.coordinates_x": "Coordenada X do Ícone de Caminhada Automática",
   "option.duperautowalk.coordinates_y": "Coordenada Y do Ícone de Caminhada Automática",
   "option.duperautowalk.coordinates_x.description": "A coordenada X do Ícone de Caminhada Automática.",
-  "option.duperautowalk.coordinates_y.description": "A coordenada Y do Ícone de Caminhada Automática."
+  "option.duperautowalk.coordinates_y.description": "A coordenada Y do Ícone de Caminhada Automática.",
+  "key.category.duperautowalk.key_category": "Duper's Utils",
+  "screen.duperautowalk.config.drag_help": "Arraste o icone para mover. Arraste o canto para redimensionar. Clique com o botao direito para alternar o icone do HUD.",
+  "screen.duperautowalk.config.coords": "X: %s Y: %s",
+  "screen.duperautowalk.config.chat_feedback": "Feedback no chat: %s",
+  "screen.duperautowalk.config.position": "Posicao: %s",
+  "screen.duperautowalk.config.size": "Tamanho: %sx%s",
+  "duperautowalk.toggle.on": "Ativado",
+  "duperautowalk.toggle.off": "Desativado"
 }

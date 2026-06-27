@@ -1,7 +1,7 @@
 package com.dupernite.duperautowalk.event;
 
 
-import com.dupernite.duperautowalk.compat.YACLconfig;
+import com.dupernite.duperautowalk.config.AutoWalkConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
@@ -9,9 +9,16 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+//? if >=1.21.9 {
+/*import net.minecraft.util.Identifier;
+*///?}
 import org.lwjgl.glfw.GLFW;
 public class keyInputHandler {
+    //? if >=1.21.9 {
+    /*public static final KeyBinding.Category CATEGORY = KeyBinding.Category.create(Identifier.of("duperautowalk", "key_category"));
+    *///?} else {
     public static final String CATEGORY = "key.category";
+    //?}
     public static final String KEY_AUTO_WALK = "key.duperautowalk.autowalk";
     public static final String KEY_OPEN_CONFIG = "key.duperautowalk.config";
 
@@ -24,12 +31,12 @@ public class keyInputHandler {
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (configKey.wasPressed()) {
-                MinecraftClient.getInstance().setScreen(YACLconfig.createScreen(null));
+                MinecraftClient.getInstance().setScreen(AutoWalkConfig.createScreen(null));
             }
             if (autoWalkKey.wasPressed()) {
                 isOn = !isOn;
 
-                if (client.player != null && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.CHAT) {
+                if (client.player != null && AutoWalkConfig.isChatFeedbackEnabled()) {
                     if(isOn){
                         client.player.sendMessage(Text.translatable("chat.duperautowalk.autowalk.enabled").formatted(Formatting.GREEN), false);
                     } else {
@@ -40,7 +47,7 @@ public class keyInputHandler {
 
             if (MinecraftClient.getInstance().options.backKey.wasPressed()){
                 isOn = false;
-                if (client.player != null && YACLconfig.getFeedback() == YACLconfig.feedbackEnum.CHAT && ForwardKeyState) {
+                if (client.player != null && AutoWalkConfig.isChatFeedbackEnabled() && ForwardKeyState) {
                     client.player.sendMessage(Text.translatable("chat.duperautowalk.autowalk.disabled").formatted(Formatting.RED), false);
                 }
             }

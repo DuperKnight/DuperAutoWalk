@@ -1,7 +1,7 @@
 plugins {
-    id("fabric-loom") version "1.10-SNAPSHOT"
+    id("fabric-loom") version "1.17.12"
     id("maven-publish")
-    id("dev.kikugie.stonecutter") version "0.6"
+    id("dev.kikugie.stonecutter") version "0.9.6"
 }
 
 version = "${property("version")}+${stonecutter.current.project}"
@@ -16,10 +16,6 @@ repositories {
         name = "Terraformers"
         url = uri("https://maven.terraformersmc.com/")
     }
-    maven {
-        name = "Xander Maven"
-        url = uri("https://maven.isxander.dev/releases")
-    }
 }
 
 dependencies {
@@ -28,7 +24,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
     modImplementation("com.terraformersmc:modmenu:${property("modmenu_version")}")
-    modImplementation("dev.isxander:yet-another-config-lib:${property("yacl_version")}")
+    implementation("com.google.code.gson:gson:2.11.0")
 }
 
 tasks.processResources {
@@ -36,11 +32,9 @@ tasks.processResources {
         ?: throw GradleException("Property loader_version is not defined")
 
     val minecraftVersionRange = when (stonecutter.current.project) {
-        "1.21.1" -> ">=1.21 <1.21.2"
-        "1.21.3" -> ">=1.21.2 <1.21.4"
-        "1.21.4" -> "1.21.4"
-        "1.21.5" -> "1.21.5"
-        "1.21.7" -> ">=1.21.6 <1.21.8"
+        "1.21.8" -> ">=1.21.8 <1.21.9"
+        "1.21.9" -> ">=1.21.9 <1.21.11"
+        "1.21.11" -> ">=1.21.11 <26"
         else -> stonecutter.current.project
     }
 
@@ -57,7 +51,7 @@ tasks.processResources {
     }
 }
 
-val targetJavaVersion = 17
+val targetJavaVersion = 21
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible) {
@@ -67,7 +61,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 java {
     withSourcesJar()
-    val javaVersion = JavaVersion.VERSION_21
+    val javaVersion = JavaVersion.toVersion(targetJavaVersion)
     targetCompatibility = javaVersion
     sourceCompatibility = javaVersion
 }

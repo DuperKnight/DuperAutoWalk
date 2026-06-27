@@ -5,13 +5,12 @@ pluginManagement {
             url = uri("https://maven.fabricmc.net/")
         }
         gradlePluginPortal()
-        maven(url = "https://maven.kikugie.dev/releases")
-        maven(url = "https://maven.kikugie.dev/snapshots")
+        maven("https://maven.kikugie.dev/snapshots") { name = "KikuGie Snapshots" }
     }
 }
 
 plugins {
-    id("dev.kikugie.stonecutter") version "0.6"
+    id("dev.kikugie.stonecutter") version "0.9.6"
 }
 
 stonecutter {
@@ -19,7 +18,7 @@ stonecutter {
     centralScript = "build.gradle.kts"
 
     create(rootProject) {
-        versions("1.21.1", "1.21.3", "1.21.4", "1.21.5", "1.21.7")
-        vcsVersion = "1.21.7"
+        versions("1.21.8", "1.21.9", "1.21.11")
+        vcsVersion = "1.21.11"
     }
 }

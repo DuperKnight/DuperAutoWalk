@@ -1,6 +1,6 @@
 package com.dupernite.duperautowalk;
 
-import com.dupernite.duperautowalk.compat.YACLconfig;
+import com.dupernite.duperautowalk.config.AutoWalkConfig;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
@@ -17,11 +17,11 @@ public class DuperAutoWalk {
 
     public DuperAutoWalk(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
-        YACLconfig.GSON.load();
+        AutoWalkConfig.load();
 
         ModLoadingContext.get().registerExtensionPoint(
                 IConfigScreenFactory.class,
-                () -> (client, parent) -> YACLconfig.createScreen(parent)
+                () -> (client, parent) -> AutoWalkConfig.createScreen(parent)
         );
         
         LOGGER.info("DuperAutoWalk mod is starting up with container: " + modContainer.getModId());

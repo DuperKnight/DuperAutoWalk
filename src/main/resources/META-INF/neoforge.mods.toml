@@ -11,6 +11,9 @@ authors="Dupernite"
 credits="Inspired by CIOCOLATA47"
 logoFile="icon.png"
 
+[[mixins]]
+config="duperautowalk.mixins.json"
+
 [[dependencies.duperautowalk]]
 modId="neoforge"
 type="required"
@@ -22,12 +25,5 @@ side="BOTH"
 modId="minecraft"
 type="required"
 versionRange="${mcVersionRange}"
-ordering="NONE"
-side="BOTH"
-
-[[dependencies.duperautowalk]]
-modId="yet_another_config_lib_v3"
-type="required"
-versionRange="[3.7.1,)"
 ordering="NONE"
 side="BOTH"

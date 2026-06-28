@@ -5,6 +5,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+//? if >=1.21.11 {
+import net.minecraft.resources.Identifier;
+//?} else {
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 
 //? if <1.21.6 {
 /*@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
@@ -15,7 +20,11 @@ public class DuperAutoWalkClient {
     @SubscribeEvent
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAbove(VanillaGuiLayers.CROSSHAIR, 
-            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("duperautowalk", "autowalk_overlay"), 
+            //? if >=1.21.11 {
+            Identifier.fromNamespaceAndPath("duperautowalk", "autowalk_overlay"),
+            //?} else {
+            /*ResourceLocation.fromNamespaceAndPath("duperautowalk", "autowalk_overlay"),
+            *///?}
             (guiGraphics, deltaTracker) -> AutoWalkOverlay.render(guiGraphics));
     }
 }

@@ -1,0 +1,12 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.dupernite.duperautowalk.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "NeoForgeModListScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

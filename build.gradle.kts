@@ -2,7 +2,7 @@ import org.gradle.api.tasks.Copy
 
 plugins {
     id("dev.kikugie.stonecutter")
-    id("net.neoforged.gradle.userdev") version "7.0.176"
+    id("net.neoforged.gradle.userdev") version "7.1.38"
     id("maven-publish")
 }
 
@@ -21,14 +21,6 @@ repositories {
         name = "NeoForged"
         url = uri("https://maven.neoforged.net/releases")
     }
-    maven {
-        name = "Xander Maven"
-        url = uri("https://maven.isxander.dev/releases")
-    }
-    maven {
-        name = "TDark's Maven"
-        url = uri("https://thedarkcolour.github.io/KotlinForForge/")
-    }
 }
 
 configurations.all {
@@ -43,7 +35,6 @@ configurations.all {
 
 dependencies {
     implementation("net.neoforged:neoforge:${property("neoforge_version")}")
-    implementation("dev.isxander:yet-another-config-lib:${property("yacl_version")}")
 }
 
 tasks.jar {
@@ -82,11 +73,9 @@ tasks.register("collectChiseledJars") {
 
 // Utility to map Minecraft project versions into versionRange strings
 fun getMcVersionRange(mcVersion: String): String = when(mcVersion) {
-    "1.21", "1.21.1" -> "[1.21,1.21.1]"
-    "1.21.2", "1.21.3" -> "[1.21.2,1.21.3]"
-    "1.21.4" -> "[1.21.4]"
-    "1.21.5" -> "[1.21.5]"
-    "1.21.8" -> "[1.21.6,1.21.8]"
+    "1.21.8" -> "[1.21.8,1.21.9)"
+    "1.21.9" -> "[1.21.9,1.21.11)"
+    "1.21.11" -> "[1.21.11,1.22)"
     else -> mcVersion
 }
 

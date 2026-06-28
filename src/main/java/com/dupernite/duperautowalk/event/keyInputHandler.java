@@ -1,19 +1,28 @@
 package com.dupernite.duperautowalk.event;
 
 import net.minecraft.client.KeyMapping;
+//? if >=1.21.11 {
+import net.minecraft.resources.Identifier;
+//?} else if >=1.21.9 {
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
 
-//? if <1.21.6 {
-/*@EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
-*///?} else {
 @EventBusSubscriber(modid = "duperautowalk", value = Dist.CLIENT)
- //?}
 public class keyInputHandler {
-    public static final String CATEGORY = "key.category";
+    //? if >=1.21.9 {
+    //? if >=1.21.11 {
+    public static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(Identifier.fromNamespaceAndPath("duperautowalk", "key_category"));
+    //?} else {
+    /*public static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(ResourceLocation.fromNamespaceAndPath("duperautowalk", "key_category"));
+    *///?}
+    //?} else {
+    /*public static final String CATEGORY = "key.category.duperautowalk.key_category";
+    *///?}
     public static final String KEY_AUTO_WALK = "key.duperautowalk.autowalk";
     public static final String KEY_OPEN_CONFIG = "key.duperautowalk.config";
 
